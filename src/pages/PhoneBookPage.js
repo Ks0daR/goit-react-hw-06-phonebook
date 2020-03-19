@@ -8,13 +8,6 @@ const PhoneBookPage = () => {
   //   return this.state.contacts.some(contact => contact.name === name);
   // };
 
-  // filteredContacts = () => {
-  //   const { searchQuery, contacts } = this.state;
-  //   return contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(searchQuery.toLowerCase()),
-  //   );
-  // };
-
   // handleSearchQuery = ({ target: { value } }) => {
   //   this.setState({ searchQuery: value });
   // };
@@ -22,7 +15,7 @@ const PhoneBookPage = () => {
   return (
     <>
       <InputForm />
-      {/* <FilterForm /> */}
+      <FilterForm />
       <Contacts />
     </>
   );

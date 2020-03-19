@@ -10,9 +10,9 @@ const Contacts = ({ elements, theme }) => {
     <>
       <h2 className={theme ? styles.Title : styles.TitleDark}>Contacts</h2>
       <ul className={styles.list}>
-        {elements.map(({ id }) => (
-          <ContactListItem key={id} id={id} />
-        ))}
+        {elements.length > 0
+          ? elements.map(({ id }) => <ContactListItem key={id} id={id} />)
+          : null}
       </ul>
     </>
   );
@@ -25,7 +25,7 @@ Contacts.propTypes = {
 
 const mapStateToProps = state => ({
   theme: state.theme,
-  elements: state.contacts,
+  elements: state.contacts.contactsBase,
 });
 
 export default connect(mapStateToProps)(Contacts);

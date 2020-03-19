@@ -1,8 +1,8 @@
-import { ADD_CONTACT, REMOVE_CONTACT } from './phoneBookTypes';
+import { ADD, REMOVE, FILTER } from './phoneBookTypes';
 import { v4 as uuidv4 } from 'uuid';
 
 const addContact = (name, number) => ({
-  type: ADD_CONTACT,
+  type: ADD,
   payload: {
     contactInfo: {
       id: uuidv4(),
@@ -13,8 +13,15 @@ const addContact = (name, number) => ({
 });
 
 const removeContact = id => ({
-  type: REMOVE_CONTACT,
+  type: REMOVE,
   payload: { id },
 });
 
-export { addContact, removeContact };
+const filteredContacts = filter => ({
+  type: FILTER,
+  payload: {
+    filter,
+  },
+});
+
+export { addContact, removeContact, filteredContacts };

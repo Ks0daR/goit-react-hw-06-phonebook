@@ -30,7 +30,7 @@ ContactListItem.propTypes = {
 
 const mapStateToProps = state => ({
   theme: state.theme,
-  elements: state.contacts,
+  elements: state.contacts.contactsBase,
 });
 
 const mapDispatchToProps = dispatch => ({

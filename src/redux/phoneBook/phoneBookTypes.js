@@ -1,4 +1,5 @@
-const ADD_CONTACT = 'phoneBook/add';
-const REMOVE_CONTACT = 'phoneBook/remove';
+const ADD = 'phoneBook/add';
+const REMOVE = 'phoneBook/remove';
+const FILTER = 'phoneBook/filtered';
 
-export { ADD_CONTACT, REMOVE_CONTACT };
+export { ADD, REMOVE, FILTER };
