@@ -1,7 +1,11 @@
 import { createStore, combineReducers } from 'redux';
 import themeReducer from './theme/themeReduser';
+import { contactReducer } from './phoneBook/phoneBookReducer';
 
-const rootReducer = combineReducers({ theme: themeReducer });
+const rootReducer = combineReducers({
+  theme: themeReducer,
+  contacts: contactReducer,
+});
 
 const store = createStore(
   rootReducer,

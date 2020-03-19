@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { addContact } from '../../redux/phoneBook/phoneBookActions';
 import PropTypes from 'prop-types';
 
 import styles from './InputForm.module.css';
@@ -66,5 +67,8 @@ class InputForm extends Component {
 }
 
 const mapStateToProps = state => ({ theme: state.theme });
+const mapDispatchToProps = dispatch => ({
+  getInfo: ({ name, number }) => dispatch(addContact(name, number)),
+});
 
-export default connect(mapStateToProps)(InputForm);
+export default connect(mapStateToProps, mapDispatchToProps)(InputForm);

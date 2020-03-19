@@ -4,20 +4,14 @@ import ContactListItem from './ContactListItem';
 import PropTypes from 'prop-types';
 import styles from './Contacts.module.css';
 
-const Contacts = ({ elements, onRemoveContacts, theme }) => {
+const Contacts = ({ elements, theme }) => {
+  console.log(elements);
   return (
     <>
       <h2 className={theme ? styles.Title : styles.TitleDark}>Contacts</h2>
       <ul className={styles.list}>
-        {elements.map(({ id, name, number }) => (
-          <ContactListItem
-            key={id}
-            id={id}
-            name={name}
-            number={number}
-            onRemove={() => null}
-            theme={theme}
-          />
+        {elements.map(({ id }) => (
+          <ContactListItem key={id} id={id} />
         ))}
       </ul>
     </>
@@ -29,6 +23,9 @@ Contacts.propTypes = {
   onRemoveContacts: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({ theme: state.theme });
+const mapStateToProps = state => ({
+  theme: state.theme,
+  elements: state.contacts,
+});
 
 export default connect(mapStateToProps)(Contacts);
