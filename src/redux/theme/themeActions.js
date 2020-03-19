@@ -1,7 +1,5 @@
-import TOGGLE_THEME from './themeTypes';
+import { createAction } from '@reduxjs/toolkit';
 
-const toggleTheme = {
-  type: TOGGLE_THEME,
-};
+const toggleTheme = createAction('theme/toggleTheme');
 
-export default toggleTheme;
+export { toggleTheme };

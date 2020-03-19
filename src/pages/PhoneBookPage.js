@@ -4,14 +4,6 @@ import Contacts from '../components/Contacts';
 import FilterForm from '../components/FilterForm';
 
 const PhoneBookPage = () => {
-  // checkedDoubleInput = name => {
-  //   return this.state.contacts.some(contact => contact.name === name);
-  // };
-
-  // handleSearchQuery = ({ target: { value } }) => {
-  //   this.setState({ searchQuery: value });
-  // };
-
   return (
     <>
       <InputForm />

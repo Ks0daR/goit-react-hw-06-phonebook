@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import styles from './Contacts.module.css';
 
 const Contacts = ({ elements, theme }) => {
-  console.log(elements);
   return (
     <>
       <h2 className={theme ? styles.Title : styles.TitleDark}>Contacts</h2>
@@ -20,12 +19,17 @@ const Contacts = ({ elements, theme }) => {
 
 Contacts.propTypes = {
   elements: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onRemoveContacts: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-  theme: state.theme,
-  elements: state.contacts.contactsBase,
-});
+const mapStateToProps = state => {
+  const { contactsBase, filter } = state.contacts;
+  const visibleContacts = contactsBase.filter(element =>
+    element.name.toLowerCase().includes(filter.toLowerCase()),
+  );
+  return {
+    theme: state.theme,
+    elements: visibleContacts,
+  };
+};
 
 export default connect(mapStateToProps)(Contacts);

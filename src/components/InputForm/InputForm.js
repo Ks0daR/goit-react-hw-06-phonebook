@@ -8,7 +8,6 @@ import styles from './InputForm.module.css';
 class InputForm extends Component {
   static propTypes = {
     theme: PropTypes.bool.isRequired,
-    onToggle: PropTypes.func.isRequired,
     getInfo: PropTypes.func.isRequired,
   };
 
@@ -23,8 +22,16 @@ class InputForm extends Component {
 
   hendleSubmit = e => {
     e.preventDefault();
+    if (this.checkedDoubleInput(this.state.name)) {
+      alert(`${this.state.name} есть в книге`);
+      return;
+    }
     this.props.getInfo(this.state);
     this.setState({ name: '', number: '' });
+  };
+
+  checkedDoubleInput = name => {
+    return this.props.contacts.some(contact => contact.name === name);
   };
 
   render() {
@@ -66,7 +73,10 @@ class InputForm extends Component {
   }
 }
 
-const mapStateToProps = state => ({ theme: state.theme });
+const mapStateToProps = state => ({
+  theme: state.theme,
+  contacts: state.contacts.contactsBase,
+});
 const mapDispatchToProps = dispatch => ({
   getInfo: ({ name, number }) => dispatch(addContact(name, number)),
 });

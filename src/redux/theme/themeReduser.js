@@ -1,13 +1,8 @@
-import TOGGLE_THEME from './themeTypes';
+import { createReducer } from '@reduxjs/toolkit';
+import { toggleTheme } from './themeActions';
 
-const themeReduser = (state = true, { type }) => {
-  switch (type) {
-    case TOGGLE_THEME:
-      return (state = !state);
+const theme = createReducer(true, {
+  [toggleTheme]: state => !state,
+});
 
-    default:
-      return state;
-  }
-};
-
-export default themeReduser;
+export default theme;

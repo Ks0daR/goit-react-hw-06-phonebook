@@ -4,15 +4,14 @@ import { connect } from 'react-redux';
 import { removeContact } from '../../../redux/phoneBook/phoneBookActions';
 import styles from './ContactIlstItem.module.css';
 
-function ContactListItem({ id, elements, theme, onRemove }) {
-  const { name, number } = elements.find(element => id === element.id);
+function ContactListItem({ name, number, theme, onRemove }) {
   return (
     <li className={theme ? styles.ListElement : styles.ListElementDark}>
       {name} {number}
       <button
         type="button"
         className={theme ? styles.Button : styles.ButtonDark}
-        onClick={() => onRemove(id)}
+        onClick={onRemove}
       >
         Delete
       </button>
@@ -28,13 +27,16 @@ ContactListItem.propTypes = {
   onRemove: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-  theme: state.theme,
-  elements: state.contacts.contactsBase,
-});
+const mapStateToProps = ({ theme, contacts }, { id }) => {
+  const item = contacts.contactsBase.find(element => element.id === id);
+  return {
+    theme,
+    ...item,
+  };
+};
 
-const mapDispatchToProps = dispatch => ({
-  onRemove: id => dispatch(removeContact(id)),
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onRemove: () => dispatch(removeContact(ownProps.id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactListItem);

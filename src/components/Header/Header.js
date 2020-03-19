@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import toggleTheme from '../../redux/theme/themeActions';
+import { toggleTheme } from '../../redux/theme/themeActions';
 import PropTypes from 'prop-types';
 import styles from './Header.module.css';
 
@@ -29,10 +29,8 @@ Header.propTypes = {
 
 const mapStateToProps = state => ({ theme: state.theme });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onToggle: () => dispatch(toggleTheme),
-  };
+const mapDispatchToProps = {
+  onToggle: toggleTheme,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
