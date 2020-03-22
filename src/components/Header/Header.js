@@ -12,7 +12,7 @@ const Header = ({ theme, onToggle }) => (
     <button
       className={theme ? styles.Button : styles.ButtonDark}
       type="button"
-      onClick={onToggle}
+      onClick={() => onToggle()}
     >
       {theme ? 'Dark' : 'Light'}
     </button>

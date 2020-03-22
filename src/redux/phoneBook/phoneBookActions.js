@@ -15,4 +15,6 @@ const removeContact = createAction('phoneBook/remove');
 
 const filteredContacts = createAction('phoneBook/filtered');
 
-export { addContact, removeContact, filteredContacts };
+const clearFilterValue = createAction('phoneBook/clearValue');
+
+export { addContact, removeContact, filteredContacts, clearFilterValue };

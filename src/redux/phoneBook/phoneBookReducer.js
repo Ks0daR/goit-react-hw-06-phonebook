@@ -4,6 +4,7 @@ import {
   addContact,
   removeContact,
   filteredContacts,
+  clearFilterValue,
 } from './phoneBookActions';
 
 const contactsBase = createReducer([], {
@@ -13,6 +14,7 @@ const contactsBase = createReducer([], {
 });
 
 const filter = createReducer('', {
+  [clearFilterValue.type]: (state, action) => '',
   [filteredContacts.type]: (state, { payload }) => payload,
 });
 
